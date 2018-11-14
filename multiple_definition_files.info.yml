@@ -1,0 +1,4 @@
+name: 'Multiple Definition Files'
+description: 'Enables multiple definition files for theme asset libraries and layouts.'
+type: module
+core: 8.x

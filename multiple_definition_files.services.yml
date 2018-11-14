@@ -1,0 +1,7 @@
+services:
+  multiple_definition_files.layout_discovery:
+    class: Drupal\multiple_definition_files\Theme\MultipleLayoutDiscovery
+    arguments: ['@plugin.manager.core.layout', '@theme_handler']
+  multiple_definition_files.library_discovery:
+    class: Drupal\multiple_definition_files\Theme\MultipleLibraryDiscovery
+    arguments: ['@theme_handler']
