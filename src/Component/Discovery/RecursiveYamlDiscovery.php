@@ -3,6 +3,7 @@
 namespace Drupal\multiple_definition_files\Component\Discovery;
 
 use Drupal\Component\Discovery\YamlDirectoryDiscovery;
+use Drupal\Core\Site\Settings;
 
 /**
  * Recursively discovers multiple YAML files in a set of directories.
@@ -54,7 +55,13 @@ class RecursiveYamlDiscovery extends YamlDirectoryDiscovery {
     if ($name !== '') {
       $name = '\.' . $name;
     }
-    $iterator = new \RecursiveDirectoryIterator($directory, \FilesystemIterator::SKIP_DOTS);
+    $flags = \FilesystemIterator::UNIX_PATHS;
+    $flags |= \FilesystemIterator::SKIP_DOTS;
+    $flags |= \FilesystemIterator::FOLLOW_SYMLINKS;
+    $flags |= \FilesystemIterator::CURRENT_AS_SELF;
+    $iterator = new \RecursiveDirectoryIterator($directory, $flags);
+    $ignore_directories = Settings::get('file_scan_ignore_directories', []);
+    $iterator = new RecursiveIgnoreDirectoriesFilterIterator($iterator, $ignore_directories);
     $iterator = new \RecursiveIteratorIterator($iterator, \RecursiveIteratorIterator::SELF_FIRST);
     $iterator = new \RegexIterator($iterator, '/' . $name . '\.yml$/i');
     return $iterator;
