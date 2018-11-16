@@ -5,7 +5,7 @@ namespace Drupal\multiple_definition_files\Component\Discovery;
 /**
  * Recursively discovers and merges multiple YAML files in a set of directories.
  */
-class MergedRecursiveYamlDiscovery extends RecursiveYamlDiscovery {
+class RecursiveMergedYamlDiscovery extends RecursiveYamlDiscovery {
 
   /**
    * Whether to exclude the main definition file or not.

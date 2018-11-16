@@ -7,7 +7,7 @@ use Drupal\Core\Layout\LayoutDefault;
 use Drupal\Core\Layout\LayoutDefinition;
 use Drupal\Core\Layout\LayoutPluginManagerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
-use Drupal\multiple_definition_files\Plugin\Discovery\MergedRecursiveYamlDiscovery;
+use Drupal\multiple_definition_files\Plugin\Discovery\RecursiveMergedYamlDiscovery;
 
 /**
  * Multiple layout discovery service.
@@ -71,7 +71,7 @@ class MultipleLayoutDiscovery implements MultipleLayoutDiscoveryInterface {
    */
   public function getLayouts(array $directories, $exclude = FALSE) {
     $layouts = [];
-    $discovery = new MergedRecursiveYamlDiscovery(
+    $discovery = new RecursiveMergedYamlDiscovery(
       $directories, 'layouts', 'layouts', $exclude
     );
     $definitions = $discovery->getDefinitions();

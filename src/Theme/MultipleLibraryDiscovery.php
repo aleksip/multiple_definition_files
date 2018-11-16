@@ -3,7 +3,7 @@
 namespace Drupal\multiple_definition_files\Theme;
 
 use Drupal\Core\Extension\ThemeHandlerInterface;
-use Drupal\multiple_definition_files\Plugin\Discovery\MergedRecursiveYamlDiscovery;
+use Drupal\multiple_definition_files\Plugin\Discovery\RecursiveMergedYamlDiscovery;
 
 /**
  * Multiple library discovery service.
@@ -56,7 +56,7 @@ class MultipleLibraryDiscovery implements MultipleLibraryDiscoveryInterface {
    *   An associative array of libraries found. Keyed by internal library name.
    */
   protected function getLibraries(array $directories, $exclude = FALSE) {
-    $discovery = new MergedRecursiveYamlDiscovery(
+    $discovery = new RecursiveMergedYamlDiscovery(
       $directories, 'libraries', 'libraries', $exclude
     );
     return $discovery->getDefinitions();

@@ -3,12 +3,12 @@
 namespace Drupal\multiple_definition_files\Plugin\Discovery;
 
 use Drupal\Core\Plugin\Discovery\YamlDiscovery;
-use Drupal\multiple_definition_files\Component\Discovery\MergedRecursiveYamlDiscovery as ComponentMergedRecursiveYamlDiscovery;
+use Drupal\multiple_definition_files\Component\Discovery\RecursiveMergedYamlDiscovery as ComponentRecursiveMergedYamlDiscovery;
 
 /**
  * Recursively discovers and merges multiple YAML files in a set of directories.
  */
-class MergedRecursiveYamlDiscovery extends YamlDiscovery {
+class RecursiveMergedYamlDiscovery extends YamlDiscovery {
 
   /**
    * RecursiveYamlDirectoryDiscovery constructor.
@@ -29,7 +29,7 @@ class MergedRecursiveYamlDiscovery extends YamlDiscovery {
   public function __construct(array $directories, $file_cache_key_suffix, $name = '', $exclude = FALSE) {
     // Intentionally does not call parent constructor as this class uses a
     // different YAML discovery.
-    $this->discovery = new ComponentMergedRecursiveYamlDiscovery($directories, $file_cache_key_suffix, $name, $exclude);
+    $this->discovery = new ComponentRecursiveMergedYamlDiscovery($directories, $file_cache_key_suffix, $name, $exclude);
   }
 
 }
