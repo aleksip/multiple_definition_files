@@ -44,7 +44,7 @@ class RecursiveYamlDiscovery extends YamlDirectoryDiscovery {
     if ($name !== '') {
       $name = '.' . $name;
     }
-    return basename($data[static::FILE_KEY], $name . '.yml');
+    return basename($file, $name . '.yml');
   }
 
   /**
