@@ -23,7 +23,7 @@ function multiple_definition_files_preprocess_layout(&$variables) {
   /** @var \Drupal\Core\Layout\LayoutDefinition $layout */
   $layout = $variables['layout'];
   foreach ($layout->getRegionNames() as $name) {
-    if (!isset($variables[$name])) {
+    if (!isset($variables[$name]) && isset($variables['content'][$name])) {
       $variables[$name] = $variables['content'][$name];
     }
   }
